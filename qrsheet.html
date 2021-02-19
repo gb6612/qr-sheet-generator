@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Utf-8">
+		<title>QR sheet generator</title>
+		<script type="text/javascript" src="qrcode.js"></script>
+		<script type="text/javascript" src="myfunctions.js"></script>
+		
+		<style>
+		/* On firefox, print -> remove margins + header + footer */
+		body {
+			/*width: 210mm;*/
+			margin-top: 14mm; /* need to adjust, gold is 16mm*/
+			margin-left: 1mm; /* need to adjust, gold is 4mm*/
+			}
+			
+		table#avery7160{
+			table-layout: fixed;
+		}
+		table#avery7160 td{
+			outline: 1px dotted; /* outline doesn't occupy space like border does */
+		}
+		table#avery7160 tr{
+			height: 10mm; /* need to adjust, gold is 38mm*/
+		}
+		</style>
+	
+	</head>
+	<body>	
+	<form>
+       Lot Number(000-999):
+       <input id="lotNumber" type="number" name="lotNumber" min="000" max="999" value="3">
+       Date Number(YYMMDD):
+       <input id="dateNumber" type="number" name="dateNumber" min="000000" max="999999" value="210101"><br>
+       Rows (1-50):
+       <input id="nbRows" type="number" name="nbRows" min="0" max="50" value="1">
+       Cols (1-50):
+       <input id="nbCols" type="number" name="nbCols" min="0" max="50" value="1"><br>
+       start ID (0-5000):
+       <input id="IDnumber" type="number" name="IDnumber" min="0" max="5000" value="1">
+	   Random ID:
+	   <input id="randID" type="checkbox" name="randID" value="0"><br>
+	   
+    </form> 
+	<input type="button" value="Update" onclick="create_qr_array()"/>
+	<br>
+
+	<table id="avery7160">
+       <tbody>      
+	   </tbody>  
+    </table> 
+	
+	</body>
+</html>
